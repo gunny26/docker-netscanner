@@ -1,68 +1,65 @@
-docker-net-sniffer
-using 2023-01-26-
-Sending build context to Docker daemon  87.55kB
-Step 1/9 : FROM --platform=linux/arm64/v8 arm64v8/ubuntu:22.04
- ---> f3d495355b4e
+docker-netscanner
+[master 0922026] automatic pre container built commit
+ 7 files changed, 272 deletions(-)
+ delete mode 100644 __pycache__/main.cpython-310.pyc
+ delete mode 100644 __pycache__/redis.cpython-310.pyc
+ delete mode 100644 dev/macs_nodes.csv
+ delete mode 100644 dev/main.py
+ delete mode 100644 dev/redis_stats.py
+ delete mode 100644 dev/redis_test.py
+ delete mode 100755 testrun.sh
+using 2024-11-04-e1149e1
+Sending build context to Docker daemon  114.7kB
+Step 1/9 : FROM --platform=linux/amd64 amd64/ubuntu:24.04
+24.04: Pulling from amd64/ubuntu
+ff65ddf9395b: Pulling fs layer
+ff65ddf9395b: Verifying Checksum
+ff65ddf9395b: Download complete
+ff65ddf9395b: Pull complete
+Digest: sha256:cdc509f93e2a016047c49d09ce87515cb42444fca47012611aaea27724b1f240
+Status: Downloaded newer image for amd64/ubuntu:24.04
+ ---> 59ab366372d5
 Step 2/9 : ENV DEBIAN_FRONTEND=noninteractive
- ---> Using cache
- ---> b24e1fcee1a9
+ ---> Running in 62dbf9d808f1
+Removing intermediate container 62dbf9d808f1
+ ---> 896477493385
 Step 3/9 : ENV TZ=Europe/Vienna
- ---> Using cache
- ---> fbc17a92c4be
-Step 4/9 : RUN apt update && apt install --no-install-recommends -y     tzdata     python3-setuptools     python3-pip     python3.11     python3-scapy     python3-redis
- ---> Using cache
- ---> f6068d500a67
-Step 5/9 : WORKDIR /usr/src/app
- ---> Using cache
- ---> 2f68d9b68c1a
-Step 6/9 : RUN pip3 freeze
- ---> Using cache
- ---> 495acb75c4f5
-Step 7/9 : COPY build/main.py /usr/src/app/main.py
- ---> 40419ead09ad
-Step 8/9 : RUN apt -y purge python3-pip python3-setuptools;     apt -y autoremove;     apt -y clean;
- ---> [Warning] The requested image's platform (linux/arm64/v8) does not match the detected host platform (linux/amd64) and no specific platform was requested
- ---> Running in febeea21bfef
+ ---> Running in 8b211407b2f1
+Removing intermediate container 8b211407b2f1
+ ---> e86a423948b3
+Step 4/9 : RUN apt update && apt install --no-install-recommends -y     tzdata     python3-setuptools     python3-pip     python3.11     python3-scapy     python3-prometheus-client
+ ---> Running in 876a33c654d5
 [91m
-[0m[91mWARNING: [0m[91mapt [0m[91mdoes not have a stable CLI interface. Use with caution in scripts.[0m[91m
-[0m[91m
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+[0mGet:1 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+Get:2 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:3 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:4 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [558 kB]
+Get:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:6 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+Get:7 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [15.3 kB]
+Get:8 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [719 kB]
+Get:9 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [498 kB]
+Get:10 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+Get:11 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+Get:12 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+Get:13 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [522 kB]
+Get:14 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [781 kB]
+Get:15 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [921 kB]
+Get:16 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [18.4 kB]
+Get:17 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [11.8 kB]
+Fetched 26.3 MB in 5s (4827 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+3 packages can be upgraded. Run 'apt list --upgradable' to see them.
+[91m
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
 [0mReading package lists...
 Building dependency tree...
 Reading state information...
-The following packages were automatically installed and are no longer required:
-  python3-distutils python3-lib2to3 python3-pkg-resources python3-wheel
-Use 'apt autoremove' to remove them.
-The following packages will be REMOVED:
-  python3-pip* python3-setuptools*
-0 upgraded, 0 newly installed, 2 to remove and 35 not upgraded.
-After this operation, 8830 kB disk space will be freed.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 9924 files and directories currently installed.)
-Removing python3-pip (22.0.2+dfsg-1ubuntu0.1) ...
-Removing python3-setuptools (59.6.0-1.2ubuntu0.22.04.1) ...
-[91m
-[0m[91mWARNING: [0m[91mapt [0m[91mdoes not have a stable CLI interface. Use with caution in scripts.[0m[91m
-[0m[91m
-[0mReading package lists...
-Building dependency tree...
-Reading state information...
-The following packages will be REMOVED:
-  python3-distutils python3-lib2to3 python3-pkg-resources python3-wheel
-0 upgraded, 0 newly installed, 4 to remove and 35 not upgraded.
-After this operation, 1902 kB disk space will be freed.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 9092 files and directories currently installed.)
-Removing python3-wheel (0.37.1-2ubuntu0.22.04.1) ...
-Removing python3-distutils (3.10.6-1~22.04) ...
-Removing python3-lib2to3 (3.10.6-1~22.04) ...
-Removing python3-pkg-resources (59.6.0-1.2ubuntu0.22.04.1) ...
-[91m
-[0m[91mWARNING: [0m[91mapt [0m[91mdoes not have a stable CLI interface. [0m[91mUse with caution in scripts.[0m[91m
-[0m[91m
-[0mRemoving intermediate container febeea21bfef
- ---> 6a380d4dcf4e
-Step 9/9 : CMD ["python3.11", "-u", "/usr/src/app/main.py"]
- ---> [Warning] The requested image's platform (linux/arm64/v8) does not match the detected host platform (linux/amd64) and no specific platform was requested
- ---> Running in 0ab52592dfc5
-Removing intermediate container 0ab52592dfc5
- ---> c5c2136ae1e9
-Successfully built c5c2136ae1e9
-Successfully tagged registry.messner.click/gunny26/docker-net-sniffer:2023-01-26-
+[91mE: Unable to locate package python3.11
+E: Couldn't find any package by glob 'python3.11'
+[0m

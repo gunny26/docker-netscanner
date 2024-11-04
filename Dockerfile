@@ -9,7 +9,7 @@ RUN apt update && apt install --no-install-recommends -y \
     tzdata \
     python3-setuptools \
     python3-pip \
-    python3.11 \
+    python3 \
     python3-scapy \
     python3-prometheus-client
 

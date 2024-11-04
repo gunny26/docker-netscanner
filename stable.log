@@ -1,0 +1,94 @@
+docker-net-sniffer
+[master 1ba1bac] automatic pre deployment commit
+ 2 files changed, 30 insertions(+), 29 deletions(-)
+using 2023-01-28-3b2bfef
+Sending build context to Docker daemon  219.1kB
+Step 1/9 : FROM --platform=linux/arm64/v8 arm64v8/ubuntu:22.04
+ ---> f3d495355b4e
+Step 2/9 : ENV DEBIAN_FRONTEND=noninteractive
+ ---> Using cache
+ ---> d14176b9ff3e
+Step 3/9 : ENV TZ=Europe/Vienna
+ ---> Using cache
+ ---> b8c2ec8f2b06
+Step 4/9 : RUN apt update && apt install --no-install-recommends -y     tzdata     python3-setuptools     python3-pip     python3.11     python3-scapy     python3-redis
+ ---> Using cache
+ ---> 235f01f109c3
+Step 5/9 : WORKDIR /usr/src/app
+ ---> Using cache
+ ---> 26beef80f0af
+Step 6/9 : RUN pip3 freeze
+ ---> Using cache
+ ---> f0efd2802f5b
+Step 7/9 : COPY build/main.py /usr/src/app/main.py
+ ---> 0e8526c307af
+Step 8/9 : RUN apt -y purge python3-pip python3-setuptools;     apt -y autoremove;     apt -y clean;
+ ---> [Warning] The requested image's platform (linux/arm64/v8) does not match the detected host platform (linux/amd64) and no specific platform was requested
+ ---> Running in 7d186d73539b
+[91m
+[0m[91mWARNING: [0m[91mapt [0m[91mdoes not have a stable CLI interface. Use with caution in scripts.[0m[91m
+[0m[91m
+[0mReading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  python3-distutils python3-lib2to3 python3-pkg-resources python3-wheel
+Use 'apt autoremove' to remove them.
+The following packages will be REMOVED:
+  python3-pip* python3-setuptools*
+0 upgraded, 0 newly installed, 2 to remove and 35 not upgraded.
+After this operation, 8830 kB disk space will be freed.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 9924 files and directories currently installed.)
+Removing python3-pip (22.0.2+dfsg-1ubuntu0.1) ...
+Removing python3-setuptools (59.6.0-1.2ubuntu0.22.04.1) ...
+[91m
+[0m[91mWARNING: [0m[91mapt [0m[91mdoes not have a stable CLI interface. Use with caution in scripts.
+
+[0mReading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be REMOVED:
+  python3-distutils python3-lib2to3 python3-pkg-resources python3-wheel
+0 upgraded, 0 newly installed, 4 to remove and 35 not upgraded.
+After this operation, 1902 kB disk space will be freed.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 9092 files and directories currently installed.)
+Removing python3-wheel (0.37.1-2ubuntu0.22.04.1) ...
+Removing python3-distutils (3.10.6-1~22.04) ...
+Removing python3-lib2to3 (3.10.6-1~22.04) ...
+Removing python3-pkg-resources (59.6.0-1.2ubuntu0.22.04.1) ...
+[91m
+[0m[91mWARNING: [0m[91mapt [0m[91mdoes not have a stable CLI interface. Use with caution in scripts.[0m[91m
+[0m[91m
+[0mRemoving intermediate container 7d186d73539b
+ ---> aaa88c3e542f
+Step 9/9 : CMD ["python3.11", "-u", "/usr/src/app/main.py"]
+ ---> [Warning] The requested image's platform (linux/arm64/v8) does not match the detected host platform (linux/amd64) and no specific platform was requested
+ ---> Running in c45e40256a5b
+Removing intermediate container c45e40256a5b
+ ---> 09e2cef29680
+Successfully built 09e2cef29680
+Successfully tagged registry.messner.click/gunny26/docker-net-sniffer:2023-01-28-3b2bfef
+The push refers to repository [registry.messner.click/gunny26/docker-net-sniffer]
+a30c7738a5c8: Preparing
+bc6b00cda8ec: Preparing
+4d17fc25ed14: Preparing
+d4f456b28253: Preparing
+0bea2fe1a8ed: Preparing
+4d17fc25ed14: Layer already exists
+0bea2fe1a8ed: Layer already exists
+d4f456b28253: Layer already exists
+bc6b00cda8ec: Pushed
+a30c7738a5c8: Pushed
+2023-01-28-3b2bfef: digest: sha256:4d21f1ed189be12ff62ca8d07d2dbdb57b2958fe971cd94e1ba7bcb31171cd70 size: 1366
+The push refers to repository [registry.messner.click/gunny26/docker-net-sniffer]
+a30c7738a5c8: Preparing
+bc6b00cda8ec: Preparing
+4d17fc25ed14: Preparing
+d4f456b28253: Preparing
+0bea2fe1a8ed: Preparing
+a30c7738a5c8: Layer already exists
+bc6b00cda8ec: Layer already exists
+0bea2fe1a8ed: Layer already exists
+4d17fc25ed14: Layer already exists
+d4f456b28253: Layer already exists
+stable: digest: sha256:4d21f1ed189be12ff62ca8d07d2dbdb57b2958fe971cd94e1ba7bcb31171cd70 size: 1366

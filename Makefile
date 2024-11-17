@@ -1,4 +1,6 @@
-export PLATFORM ?= linux/arm64/v8
+
+# export PLATFORM ?= linux/arm64/v8
+export PLATFORM ?= linux/amd64
 export IMAGENAME ?= $(shell pwd | rev | cut -d/ -f 1 | rev)
 export DATESTRING ?= $(shell date -I)
 export TAG ?= $(shell git describe --always)

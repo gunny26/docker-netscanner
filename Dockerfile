@@ -1,7 +1,7 @@
 # FROM --platform=linux/arm/v7 arm32v7/ubuntu:20.04
 # FROM --platform=linux/arm64/v8 arm64v8/ubuntu:24.04
 # FROM --platform=linux/amd64 amd64/ubuntu:24.04
-FROM python-alpine
+FROM python/3.13-alpine
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Vienna

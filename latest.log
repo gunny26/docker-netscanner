@@ -1,6 +1,7 @@
 docker-netscanner
-[master 4516d96] automatic pre container built commit
- 3 files changed, 131 insertions(+), 127 deletions(-)
-using 2024-11-17-c2206b8
-Sending build context to Docker daemon  175.1kB
-Step 1/9 : FROM python/python-3.13
+[master 03b5859] automatic pre container built commit
+ 2 files changed, 7 insertions(+), 275 deletions(-)
+ rewrite latest.log (99%)
+using 2024-11-17-4516d96
+Sending build context to Docker daemon  163.8kB
+Step 1/9 : FROM python/python-3.12

@@ -1,8 +1,8 @@
 docker-netscanner
-[master 075a3c1] automatic pre latest image built commit
- 2 files changed, 20 insertions(+), 18 deletions(-)
-using 2024-11-19-24f3f9c
-Sending build context to Docker daemon  239.1kB
+[master d7276b6] automatic pre latest image built commit
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+using 2024-11-19-5a92dfb
+Sending build context to Docker daemon  251.9kB
 Step 1/9 : FROM ubuntu:24.04
  ---> fec8bfd95b54
 Step 2/9 : ENV DEBIAN_FRONTEND=noninteractive
@@ -21,13 +21,46 @@ Step 6/9 : RUN pip3 freeze
  ---> Using cache
  ---> 03cfd714fdfe
 Step 7/9 : COPY build/main.py /usr/src/app/main.py
- ---> Using cache
- ---> 27cd7a8cef10
+ ---> 403913234aca
 Step 8/9 : RUN apt -y purge python3-pip python3-setuptools;     apt -y autoremove;     apt -y clean;
- ---> Using cache
- ---> 4aa4aaff0531
+ ---> Running in 29f78ab3d161
+[91m
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+[0mReading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  python3-pkg-resources python3-wheel
+Use 'apt autoremove' to remove them.
+The following packages will be REMOVED:
+  python3-pip* python3-setuptools*
+0 upgraded, 0 newly installed, 2 to remove and 3 not upgraded.
+After this operation, 9275 kB disk space will be freed.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 7615 files and directories currently installed.)
+Removing python3-pip (24.0+dfsg-1ubuntu1.1) ...
+Removing python3-setuptools (68.1.2-2ubuntu1.1) ...
+[91m
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+[0mReading package lists...
+Building dependency tree...
+Reading state information...
+The following packages will be REMOVED:
+  python3-pkg-resources python3-wheel
+0 upgraded, 0 newly installed, 2 to remove and 3 not upgraded.
+After this operation, 1004 kB disk space will be freed.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 6729 files and directories currently installed.)
+Removing python3-pkg-resources (68.1.2-2ubuntu1.1) ...
+Removing python3-wheel (0.42.0-2) ...
+[91m
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+[0mRemoving intermediate container 29f78ab3d161
+ ---> 97586f436d62
 Step 9/9 : CMD ["python3", "-u", "/usr/src/app/main.py"]
- ---> Using cache
- ---> 4eaa4817e1ad
-Successfully built 4eaa4817e1ad
-Successfully tagged registry.messner.click/gunny26/docker-netscanner:2024-11-19-24f3f9c
+ ---> Running in 9f536880ab76
+Removing intermediate container 9f536880ab76
+ ---> ded6311cf0cf
+Successfully built ded6311cf0cf
+Successfully tagged registry.messner.click/gunny26/docker-netscanner:2024-11-19-5a92dfb

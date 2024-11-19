@@ -1,6 +1,8 @@
-# 
-export PLATFORM ?= linux/arm64/v8
-# export PLATFORM ?= linux/amd64
+# latest platform is local
+export PLATFORM_LATEST ?= linux/amd64
+# stable platform is target system
+export PLATFORM_STABLE ?= linux/arm64/v8
+
 export IMAGENAME ?= $(shell pwd | rev | cut -d/ -f 1 | rev)
 export DATESTRING ?= $(shell date -I)
 export TAG ?= $(shell git describe --always)
@@ -18,7 +20,7 @@ latest:
 	echo $(IMAGENAME) > latest.tmp
 	git commit -a -m "automatic pre container built commit" | tee -a latest.tmp
 	echo "using $(DATESTRING)-$(TAG)" | tee -a latest.tmp
-	docker build --platform $(PLATFORM) -t $(IMAGE_NAME) . | tee -a latest.tmp
+	docker build --platform $(PLATFORM_LATEST) -t $(IMAGE_NAME) . | tee -a latest.tmp
 	docker tag $(IMAGE_NAME) $(IMAGE_NAME_LATEST) | tee -a latest.tmp
 	mv latest.tmp latest.log
 
@@ -28,7 +30,7 @@ stable:
 	git commit -a -m "automatic pre deployment commit" | tee -a stable.tmp
 	echo "using $(DATESTRING)-$(TAG)" | tee -a stable.tmp
 	# docker build --no-cache --platform $(PLATFORM) -t $(IMAGE_NAME) . | tee -a stable.tmp
-	docker build --platform $(PLATFORM) -t $(IMAGE_NAME) . | tee -a stable.tmp
+	docker build --platform $(PLATFORM_STABLE) -t $(IMAGE_NAME) . | tee -a stable.tmp
 	docker tag $(IMAGE_NAME) $(IMAGE_NAME_LATEST) | tee -a stable.tmp
 	docker tag $(IMAGE_NAME) $(IMAGE_NAME_STABLE) | tee -a stable.tmp
 	docker push $(IMAGE_NAME) | tee -a stable.tmp

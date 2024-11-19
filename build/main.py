@@ -4,6 +4,7 @@ import os
 import sys
 import time
 from prometheus_client import start_http_server, Counter
+
 # import scapy
 import scapy.all as scapy
 
@@ -12,7 +13,7 @@ logging.basicConfig(level=logging.INFO)
 APP_LOG_LEVEL = os.environ.get("APP_LOG_LEVEL", "INFO")
 APP_INTERFACE = os.environ.get(
     "APP_INTERFACE",
-    "wlp4s0"  # default for development
+    "wlp4s0",  # default for development
 )  # None to listen on all available, if set only this one
 APP_DISPLAY_INTERVAL = int(os.environ.get("APP_DISPLAY_INTERVAL", "60"))
 
@@ -22,9 +23,27 @@ for key, value in os.environ.items():
         logging.info(f"{key}: {value}")
 
 # prometheus metrics
-MAC_SEEN_TOTAL = Counter("netscanner_mac_seen_total", "Number of intervals this MAC address was seen", ["address", ])
-IPV4_SEEN_TOTAL = Counter("netscanner_ipv4_seen_total", "Number of intervals this ipv4 address was seen", ["address", ])
-IPV6_SEEN_TOTAL = Counter("netscanner_ipv6_seen_total", "Number of intervals this ipv6 address was seen", ["address", ])
+MAC_SEEN_TOTAL = Counter(
+    "netscanner_mac_seen_total",
+    "Number of intervals this MAC address was seen",
+    [
+        "address",
+    ],
+)
+IPV4_SEEN_TOTAL = Counter(
+    "netscanner_ipv4_seen_total",
+    "Number of intervals this ipv4 address was seen",
+    [
+        "address",
+    ],
+)
+IPV6_SEEN_TOTAL = Counter(
+    "netscanner_ipv6_seen_total",
+    "Number of intervals this ipv6 address was seen",
+    [
+        "address",
+    ],
+)
 
 BLACKLIST = [
     "ff:ff:ff:ff:ff:ff",
@@ -32,7 +51,7 @@ BLACKLIST = [
 
 
 class Harvester:
-    """ used by packet handler and collecting information"""
+    """used by packet handler and collecting information"""
 
     def __init__(self, prom_counter, label):
         """
@@ -67,7 +86,7 @@ class Harvester:
 
 
 class PacketHandler(object):
-    """ called if packet received """
+    """called if packet received"""
 
     def __init__(self):
         print("paket handler started")
@@ -142,7 +161,7 @@ if __name__ == "__main__":
     elif APP_LOG_LEVEL == "ERROR":
         logging.getLogger().setLevel(logging.ERROR)
 
-    logging.info("starting prometheus export in port 9100/tcp")
+    logging.info("starting prometheus exporter on port 9100/tcp")
     start_http_server(9100)  # start prometheus exporter on port 9000/tcp
 
     # collecting mac, ipv4 and ipv6 addresses

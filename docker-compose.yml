@@ -13,3 +13,4 @@ services:
         environment:
             TZ: Europe/Vienna
             APP_LOG_LEVEL: INFO
+            APP_PORT: 9101

@@ -16,6 +16,7 @@ APP_INTERFACE = os.environ.get(
     "wlp4s0",  # default for development
 )  # None to listen on all available, if set only this one
 APP_DISPLAY_INTERVAL = int(os.environ.get("APP_DISPLAY_INTERVAL", "60"))
+APP_PORT = int(os.environ.get("APP_PORT", "9100"))
 
 logging.info("showing enviroment variables")
 for key, value in os.environ.items():
@@ -161,8 +162,8 @@ if __name__ == "__main__":
     elif APP_LOG_LEVEL == "ERROR":
         logging.getLogger().setLevel(logging.ERROR)
 
-    logging.info("starting prometheus exporter on port 9100/tcp")
-    start_http_server(9100)  # start prometheus exporter on port 9000/tcp
+    logging.info(f"starting prometheus exporter on port {APP_PORT}/tcp")
+    start_http_server(APP_PORT)  # start prometheus exporter on selected port
 
     # collecting mac, ipv4 and ipv6 addresses
     mac_harvester = Harvester(prom_counter=MAC_SEEN_TOTAL, label="mac addresses")

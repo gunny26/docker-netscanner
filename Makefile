@@ -42,9 +42,8 @@ stable:
 	git push origin master
 
 lint:
-	black build/main.py
-	isort build/main.py
-	flake8 build/main.py
+	ruff check build/main.py
+	ruff format build/main.py
 
 clean:
 	if [ -f stable.log ]; then rm stable.log; fi

@@ -142,7 +142,7 @@ if __name__ == "__main__":
     elif APP_LOG_LEVEL == "ERROR":
         logging.getLogger().setLevel(logging.ERROR)
 
-    logginf.info("starting prometheus export in port 9100/tcp")
+    logging.info("starting prometheus export in port 9100/tcp")
     start_http_server(9100)  # start prometheus exporter on port 9000/tcp
 
     # collecting mac, ipv4 and ipv6 addresses

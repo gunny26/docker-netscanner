@@ -1,9 +1,8 @@
 docker-netscanner
-[master 24f3f9c] automatic pre container built commit
- 3 files changed, 36 insertions(+), 148 deletions(-)
- rewrite latest.log (90%)
-using 2024-11-19-3814160
-Sending build context to Docker daemon  231.9kB
+[master 075a3c1] automatic pre latest image built commit
+ 2 files changed, 20 insertions(+), 18 deletions(-)
+using 2024-11-19-24f3f9c
+Sending build context to Docker daemon  239.1kB
 Step 1/9 : FROM ubuntu:24.04
  ---> fec8bfd95b54
 Step 2/9 : ENV DEBIAN_FRONTEND=noninteractive
@@ -31,4 +30,4 @@ Step 9/9 : CMD ["python3", "-u", "/usr/src/app/main.py"]
  ---> Using cache
  ---> 4eaa4817e1ad
 Successfully built 4eaa4817e1ad
-Successfully tagged registry.messner.click/gunny26/docker-netscanner:2024-11-19-3814160
+Successfully tagged registry.messner.click/gunny26/docker-netscanner:2024-11-19-24f3f9c

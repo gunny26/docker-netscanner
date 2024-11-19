@@ -1,9 +1,13 @@
 docker-netscanner
-[master 95c970b] automatic pre latest image built commit
- 1 file changed, 26 insertions(+), 7 deletions(-)
-using 2024-11-19-1139ee3
-Sending build context to Docker daemon  284.2kB
+[master ba43f1e] automatic pre latest image built commit
+ 4 files changed, 278 insertions(+), 73 deletions(-)
+ delete mode 100644 stable.tmp
+using 2024-11-19-0a8d599
+Sending build context to Docker daemon  324.1kB
 Step 1/9 : FROM ubuntu:24.04
+24.04: Pulling from library/ubuntu
+Digest: sha256:278628f08d4979fb9af9ead44277dbc9c92c2465922310916ad0c46ec9999295
+Status: Downloaded newer image for ubuntu:24.04
  ---> fec8bfd95b54
 Step 2/9 : ENV DEBIAN_FRONTEND=noninteractive
  ---> Using cache
@@ -21,9 +25,9 @@ Step 6/9 : RUN pip3 freeze
  ---> Using cache
  ---> 03cfd714fdfe
 Step 7/9 : COPY build/main.py /usr/src/app/main.py
- ---> dc9c118d1d62
+ ---> 28ac87d3ccf3
 Step 8/9 : RUN apt -y purge python3-pip python3-setuptools;     apt -y autoremove;     apt -y clean;
- ---> Running in 1d32111a59d4
+ ---> Running in 080ac91bbced
 [91m
 WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
 
@@ -56,11 +60,11 @@ Removing python3-wheel (0.42.0-2) ...
 [91m
 WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
 
-[0mRemoving intermediate container 1d32111a59d4
- ---> f5328e8f3ece
+[0mRemoving intermediate container 080ac91bbced
+ ---> 1dc76895ee5a
 Step 9/9 : CMD ["python3", "-u", "/usr/src/app/main.py"]
- ---> Running in 52b25e691029
-Removing intermediate container 52b25e691029
- ---> 994af965f1f9
-Successfully built 994af965f1f9
-Successfully tagged registry.messner.click/gunny26/docker-netscanner:2024-11-19-1139ee3
+ ---> Running in bd12154a42fd
+Removing intermediate container bd12154a42fd
+ ---> e1c5a873b888
+Successfully built e1c5a873b888
+Successfully tagged registry.messner.click/gunny26/docker-netscanner:2024-11-19-0a8d599

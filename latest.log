@@ -1,34 +1,34 @@
 docker-netscanner
-[master 3814160] automatic pre container built commit
- 2 files changed, 147 insertions(+), 7 deletions(-)
- rewrite latest.log (92%)
-using 2024-11-19-bcd060c
-Sending build context to Docker daemon  232.4kB
-Step 1/9 : FROM python:3.13
- ---> c41ea8273365
+[master 24f3f9c] automatic pre container built commit
+ 3 files changed, 36 insertions(+), 148 deletions(-)
+ rewrite latest.log (90%)
+using 2024-11-19-3814160
+Sending build context to Docker daemon  231.9kB
+Step 1/9 : FROM ubuntu:24.04
+ ---> fec8bfd95b54
 Step 2/9 : ENV DEBIAN_FRONTEND=noninteractive
  ---> Using cache
- ---> 36b395bf2362
+ ---> 1696b2a27c5a
 Step 3/9 : ENV TZ=Europe/Vienna
  ---> Using cache
- ---> ac3de4e6017f
+ ---> 3c8aeeaf96d2
 Step 4/9 : RUN apt update && apt install --no-install-recommends -y     tzdata     python3-setuptools     python3-pip     python3     python3-scapy     python3-prometheus-client
  ---> Using cache
- ---> 6c80589bc2f7
+ ---> 49784024845f
 Step 5/9 : WORKDIR /usr/src/app
  ---> Using cache
- ---> 1adeb5b625e7
+ ---> 3604d8871770
 Step 6/9 : RUN pip3 freeze
  ---> Using cache
- ---> 5eccd24f0759
+ ---> 03cfd714fdfe
 Step 7/9 : COPY build/main.py /usr/src/app/main.py
  ---> Using cache
- ---> 7ffdf906b349
+ ---> 27cd7a8cef10
 Step 8/9 : RUN apt -y purge python3-pip python3-setuptools;     apt -y autoremove;     apt -y clean;
  ---> Using cache
- ---> d847cd8005e6
+ ---> 4aa4aaff0531
 Step 9/9 : CMD ["python3", "-u", "/usr/src/app/main.py"]
  ---> Using cache
- ---> fb50c6814100
-Successfully built fb50c6814100
-Successfully tagged registry.messner.click/gunny26/docker-netscanner:2024-11-19-bcd060c
+ ---> 4eaa4817e1ad
+Successfully built 4eaa4817e1ad
+Successfully tagged registry.messner.click/gunny26/docker-netscanner:2024-11-19-3814160

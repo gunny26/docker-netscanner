@@ -142,7 +142,8 @@ if __name__ == "__main__":
     elif APP_LOG_LEVEL == "ERROR":
         logging.getLogger().setLevel(logging.ERROR)
 
-    start_http_server(8000)  # start prometheus exporter on port 9000/tcp
+    logginf.info("starting prometheus export in port 9100/tcp")
+    start_http_server(9100)  # start prometheus exporter on port 9000/tcp
 
     # collecting mac, ipv4 and ipv6 addresses
     mac_harvester = Harvester(prom_counter=MAC_SEEN_TOTAL, label="mac addresses")

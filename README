@@ -1,0 +1,3 @@
+# Netscanner Container
+
+Container to sniff for some ethernet informations and export this to prometheus
